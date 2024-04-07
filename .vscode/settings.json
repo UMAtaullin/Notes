@@ -1,0 +1,11 @@
+{
+	"editor.tabSize": 2,
+	// Insert spaces when pressing Tab.
+	"editor.insertSpaces": false,
+	// When open a file, `editor.tabSize`,`editor.insertSpaces` will be detected based on the file contents.
+	"editor.detectIndentation": false, // true - 4 space, false - 2 space
+	// Collapse and expand sections of code
+	"editor.showFoldingControls": "always",
+	"editor.folding": true,
+	"editor.foldingStrategy": "indentation"
+}
