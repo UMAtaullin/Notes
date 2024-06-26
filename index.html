@@ -1,36 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="style.css">
-		<title>Заметки</title>
-	</head>
-	<body>
-		<div class="container">
-			<h1>Заметки</h1>
-			<div class="input">
-				<input
-					type="text"
-					class="input-title"
-					placeholder="Введите название"
-					id="title"
-				/>
-			</div>
-			<div class="button">
-				<button class="btn-add" id="create">Добавить</button>
-			</div>
-			<div class="list-group">
-				<ul class="list-group-flush" id="list">
-					<li class="list-group-item">
-						<span>Название</span>
-						<span>
-							<span class="btn-success">&check; Изменить</span>
-							<span class="btn-danger">&times; Удалить</span>
-						</span>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <title>Заметки</title>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Заметки</h1>
+      <div class="input">
+        <input
+          type="text"
+          class="input-title"
+          placeholder="Введите название"
+          id="title"
+        />
+      </div>
+      <div class="button">
+        <button class="btn-add" id="create">Добавить</button>
+      </div>
+      <div class="list-group">
+        <ul class="list-group-flush" id="list">
+          <!-- <li class="list-group-item">
+            <span>Название</span>
+            <span>
+              <span class="btn-success">&check; Изменить</span>
+              <span class="btn-danger">&times; Удалить</span>
+            </span>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+  </body>
 </html>
