@@ -1,22 +1,15 @@
-// Получить значение которое вписано в input
 const inputEl = document.getElementById('title')
-// Обработать событие клика
 const createBtn = document.getElementById('create')
-// Чтобы добавлять эл в список
 const listEl= document.getElementById('list')
 
-// Добавляем обработчик события на кнопку
-createBtn.onclick = function() {
-  // если пустая строка то ничего не возвращает
-  if (inputEl.value.length === 0) {
-    return
-  }
-  // принимает два параметра: первый - куда положить - beforeend
+const notes = ['first', 'second', 'third', 'fourth']
+
+const render = (note) => {
   listEl.insertAdjacentHTML(
     'beforeend',
     `
       <li class="list-group-item">
-      <span>${inputEl.value}</span>
+      <span>${note}</span>
       <span>
         <span class="btn-success">&check; Изменить</span>
         <span class="btn-danger">&times; Удалить</span>
@@ -24,7 +17,19 @@ createBtn.onclick = function() {
       </li>
     `
   )
-  // как только добавили запись выше очистить input
+}
+
+for (let note of notes) {
+  render(note)
+}
+
+createBtn.onclick = function() {
+  if (inputEl.value.length === 0) {
+    return
+  }
+
+  render(inputEl.value)
+  
   inputEl.value = ''
 }
 
