@@ -2,37 +2,72 @@ const inputEl = document.getElementById('title')
 const createBtn = document.getElementById('create')
 const listEl= document.getElementById('list')
 
-const notes = ['first', 'second', 'third', 'fourth']
+const notes = [
+  {title: 'first', completed: false},
+  {title: 'second', completed: true},
+  {title: 'third', completed: true}
+]
 
-const render = (note) => {
-  listEl.insertAdjacentHTML(
-    'beforeend',
-    `
-      <li class="list-group-item">
-      <span>${note}</span>
-      <span>
-        <span class="btn-success">&check; Изменить</span>
-        <span class="btn-danger">&times; Удалить</span>
-      </span>
-      </li>
-    `
-  )
+function render() {
+  listEl.innerHTML = ''
+  for (let i = 0; i < notes.length; i++) {
+    listEl.insertAdjacentHTML('beforeend', 
+      getNoteTemplate(notes[i], i))
+  }
 }
 
-for (let note of notes) {
-  render(note)
-}
+render()
 
 createBtn.onclick = function() {
   if (inputEl.value.length === 0) {
     return
   }
+  const newNote = {
+    title: inputEl.value, completed: false,
+  }
 
-  render(inputEl.value)
-  
+  notes.push(newNote)
+  render()
   inputEl.value = ''
 }
 
+listEl.onclick = function (event) {
+  if (event.target.dataset.index) {
+    const index = parseInt(event.target.dataset.index)
+    const type = parseInt(event.target.dataset.type)
+
+    if (type === 'toggle') {
+      notes[index].completed = !notes[index].completed
+    } else if (type === 'remove') {
+      notes.splice(index, 1)
+    }
+
+    render()
+  }
+}
+
+function getNoteTemplate(note, index) {
+  return `
+    <li class="list-group-item">
+    <span class="${note.completed ? 'decorate' : ''}">
+      ${note.title}
+    </span>
+    <span>
+      <span 
+        class="btn-success"
+        data-index="${index}"
+        data-type="toggle">
+          &check; Изменить
+      </span>
+      <span 
+        class="btn-danger"
+        data-index="${index}"
+        data-type="remove">
+          &times; Удалить</span>
+    </span>
+    </li>
+  `
+}
 
 
 
@@ -63,3 +98,19 @@ const array = [1, 2, 5, 290]
 // array[array.length] = 'by'
 // console.log(array)
 */
+
+/**
+ * Object Theory
+const person = {
+  surname: 'Ural',
+  lastName: 'Jon',
+  year: 1988,
+  hasGirlFriend: false,
+  lg: ['ru', 'en', 'bsh'],
+  getFullName: function() {
+    console.log(this.surname, this.lastName)
+  },
+}
+
+person.getFullName()
+ */
